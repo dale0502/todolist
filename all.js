@@ -8,7 +8,7 @@ updateList(data);
 //送出事件監聽
 send.addEventListener('click',saveTodoList);
 
-輸入代辦事項存入localStorage 
+//輸入代辦事項存入localStorage 
 function saveTodoList(e){ 
     var str = document.querySelector('.textArea').value;//取值
     // alert(str);
@@ -37,6 +37,7 @@ list.addEventListener('click',checkList);
 //刪除代辦事項
 function checkList(e){
     // console.log(e.target.nodeName); //確認所點擊的範圍
+    e.preventDefault();
     if(e.target.nodeName !=='A'){return};
     var items = e.target.dataset.index;
     // console.log(items);
