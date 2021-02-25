@@ -10,15 +10,18 @@ send.addEventListener('click',saveTodoList);
 
 //輸入代辦事項存入localStorage 
 function saveTodoList(e){ 
-    var str = document.querySelector('.textArea').value;//取值
+    var str = document.querySelector('.textArea');
     // alert(str);
     var todo = {
-        content: str
+        content: str.value
     };
     data.push(todo);  //取值存入
+    str.value = '';
     updateList(data);
     localStorage.setItem('myList',JSON.stringify(data)); //轉為字串存入localStorage     
 };
+
+
 
 
 // 將localStorage資料印出
@@ -26,11 +29,14 @@ function updateList(data) {
     var str = '';
     for(var i=0; i<data.length;i++) {
         // console.log(data[i].content);
-        str += '<li><a href="#" data-index=' + i + '/>刪除</a><span>' + data[i].content + '<hr></span></li>';
+        str += '<li><a href="#" data-index=' + i + '>刪除</a><span>' + data[i].content + '<hr></span></li>';
     }
     list.innerHTML = str;
     
 }
+
+
+
 
 
 list.addEventListener('click',checkList);
